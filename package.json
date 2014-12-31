@@ -1,0 +1,8 @@
+{
+  "name": "drawing-board",
+  "version": "0.0.1",
+  "description": "Collaberative whiteboard",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}

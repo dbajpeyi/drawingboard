@@ -1,7 +1,5 @@
 //A simple html5 draw board
 
-
-
 var prepareCanvas = function () {
   var canDiv = document.getElementById("canvasDiv");
   var canvasWidth="400";
