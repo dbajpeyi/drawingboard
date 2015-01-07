@@ -27,7 +27,6 @@ var prepareCanvas = function () {
   }
 
 
-
   function redraw(clickDrag,clickX,clickY){
 
     context.strokeStyle = "#df4b26";
@@ -59,26 +58,25 @@ socket.on("drawing",function(msg){
 
     paint = true;
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-    socket.emit("drawing", {drag : clickDrag, x : clickX, y : clickY});
+    redraw(clickDrag, clickX, clickY);
   });
-
-
-
 
   $("#canvas").mousemove(function(e){
     if(paint){
       addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-      socket.emit("drawing", {drag : clickDrag, x : clickX, y : clickY});
+      redraw(clickDrag, clickX, clickY);
     }
 
   });
 
   $('#canvas').mouseup(function(e){
     paint = false;
+    socket.emit("drawing", {drag : clickDrag, x : clickX, y : clickY});
   });
 
   $('#canvas').mouseleave(function(e){
     paint = false;
+    socket.emit("drawing", {drag : clickDrag, x : clickX, y : clickY});
   });
 
 
